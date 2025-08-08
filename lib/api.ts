@@ -42,6 +42,17 @@ export interface School {
   father_name: string;
 }
 
+export interface Transaction {
+  id: number;
+  transection_id: string;
+  user_id: string;
+  payment_id: string;
+  amount: number;
+  payment_method: string;
+  status: string;
+  created_at: string; // ISO date string
+}
+
 export interface User {
   name: string;
   email: string;
@@ -90,6 +101,11 @@ export async function fetchSchools(): Promise<School[]> {
   return fetchData<School>("/admin/schools");
 }
 
+export async function fetchTransactions(): Promise<Transaction[]> {
+  return fetchData<Transaction>("/admin/transactions");
+}
+
 export async function fetchUsers(): Promise<User[]> {
   return fetchData<User>("/admin/users");
 }
+

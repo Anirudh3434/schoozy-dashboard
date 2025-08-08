@@ -28,38 +28,32 @@ const renderUrlCell = (url: string | null | undefined) => {
 }
 
 export const registrationColumns: ColumnDef<OlympiadRegistration>[] = [
+  { accessorKey: "id", header: "ID" },
+  { accessorKey: "first_name", header: "First Name" },
+  { accessorKey: "last_name", header: "Last Name" },
+  { accessorKey: "email", header: "Email" },
+  { accessorKey: "phone", header: "Phone" },
   {
-    accessorKey: "id",
-    header: "ID",
+    accessorKey: "date_of_birth",
+    header: "DOB",
+    cell: ({ row }) => formatDate(row.original.date_of_birth),
   },
-  {
-    accessorKey: "first_name",
-    header: "First Name",
-  },
-  {
-    accessorKey: "last_name",
-    header: "Last Name",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "phone",
-    header: "Phone",
-  },
-  {
-    accessorKey: "school_name",
-    header: "School Name",
-  },
-  {
-    accessorKey: "class",
-    header: "Class",
-  },
-  {
-    accessorKey: "subjects",
-    header: "Subjects",
-  },
+  { accessorKey: "address_line1", header: "Address 1" },
+  { accessorKey: "address_line2", header: "Address 2" },
+  { accessorKey: "city", header: "City" },
+  { accessorKey: "state", header: "State" },
+  { accessorKey: "zip_code", header: "ZIP" },
+  { accessorKey: "country", header: "Country" },
+  { accessorKey: "class", header: "Class" },
+  { accessorKey: "school_name", header: "School Name" },
+  { accessorKey: "board", header: "Board" },
+  { accessorKey: "school_address_line1", header: "School Address 1" },
+  { accessorKey: "school_city", header: "School City" },
+  { accessorKey: "school_state", header: "School State" },
+  { accessorKey: "school_zip_code", header: "School ZIP" },
+  { accessorKey: "school_country", header: "School Country" },
+  { accessorKey: "medium", header: "Medium" },
+  { accessorKey: "subjects", header: "Subjects" },
   {
     accessorKey: "passport_photo_url",
     header: "Passport Photo",
@@ -75,12 +69,70 @@ export const registrationColumns: ColumnDef<OlympiadRegistration>[] = [
     header: "School ID",
     cell: ({ row }) => renderUrlCell(row.original.school_id_url),
   },
+  { accessorKey: "aadhaar_number", header: "Aadhaar No" },
+  {
+    accessorKey: "payment_status",
+    header: "Payment Status",
+    cell: ({ row }) => (
+      <span
+        className={`px-2 py-1 rounded text-white text-xs ${
+          row.original.payment_status === "paid"
+            ? "bg-green-500"
+            : "bg-yellow-500"
+        }`}
+      >
+        {row.original.payment_status}
+      </span>
+    ),
+  },
+  
   {
     accessorKey: "created_at",
     header: "Registered On",
     cell: ({ row }) => formatDate(row.original.created_at),
   },
+  {
+    accessorKey: "updated_at",
+    header: "Last Updated",
+    cell: ({ row }) => formatDate(row.original.updated_at),
+  },
 ]
+
+export const transactionColumns: ColumnDef<Transaction>[] = [
+  {
+    accessorKey: "transection_id",
+    header: "Transaction ID",
+  },
+  {
+    accessorKey: "user_id",
+    header: "User ID",
+  },
+  {
+    accessorKey: "payment_id",
+    header: "Payment ID",
+  },
+  {
+    accessorKey: "amount",
+    header: "Amount",
+  },
+  {
+    accessorKey: "payment_method",
+    header: "Payment Method",
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "created_at",
+    header: "Created On",
+    cell: ({ row }) => formatDate(row.original.created_at),
+  },
+]
+
+ 
+
+
 
 export const schoolColumns: ColumnDef<School>[] = [
   {
@@ -117,6 +169,8 @@ export const schoolColumns: ColumnDef<School>[] = [
     cell: ({ row }) => formatDate(row.original.created_at),
   },
 ]
+
+
 
 export const userColumns: ColumnDef<User>[] = [
   {
