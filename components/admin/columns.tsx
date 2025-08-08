@@ -59,11 +59,7 @@ export const registrationColumns: ColumnDef<OlympiadRegistration>[] = [
     header: "Passport Photo",
     cell: ({ row }) => renderUrlCell(row.original.passport_photo_url),
   },
-  {
-    accessorKey: "uid_aadhaar_url",
-    header: "Aadhaar/UID",
-    cell: ({ row }) => renderUrlCell(row.original.uid_aadhaar_url),
-  },
+
   {
     accessorKey: "school_id_url",
     header: "School ID",
