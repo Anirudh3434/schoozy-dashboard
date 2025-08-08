@@ -85,7 +85,7 @@ export const registrationColumns: ColumnDef<OlympiadRegistration>[] = [
       </span>
     ),
   },
-  
+
   {
     accessorKey: "created_at",
     header: "Registered On",
@@ -107,10 +107,7 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
     accessorKey: "user_id",
     header: "User ID",
   },
-  {
-    accessorKey: "payment_id",
-    header: "Payment ID",
-  },
+
   {
     accessorKey: "amount",
     header: "Amount",
@@ -118,10 +115,6 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "payment_method",
     header: "Payment Method",
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
   },
   {
     accessorKey: "created_at",
